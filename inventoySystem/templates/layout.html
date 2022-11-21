@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+
+     <!-- FONT -->
+    <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+   />
+    
+   <!-- TITLE -->
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>IMS</title>
+    {% endif %}
+</head>
+<body>
+      <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'inventory_list' %}">InventoryManageSystem</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="{% url 'inventory_list' %}">Home</a>
+              {% if request.user.is_authenticated %}
+                <a class="nav-link" aria-current="page" href="{% url 'inventory_list' %}">Inventory</a>
+                <a class="nav-link" aria-current="page" href="{% url 'add_inventory' %}">Add Inventory</a>
+                <a class="nav-link" aria-current="page" href="{% url 'dashboard' %}"><i class="fas fa-chart-line"> Dashboard</i></a>
+                <a class="nav-link" aria-current="page" href="{% url 'admin:index' %}"><i class="fas fa-users-cog"> Admin</i></a>
+                <a class="nav-link pull-right"  href="{% url 'logout' %}"><i class="fas fa-sign-out-alt">Logout</i></a>
+              </div>
+            </div>
+          {% endif %}
+          </div>
+    </nav>
+
+    <main>
+        <div class="container-fluid">
+         
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 col-sm-12 col-xm-12">
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }} mt-4">
+                    {{ message }}
+                  </div>
+                {% endfor %} 
+              {% endif %} 
+              {% block content %} 
+
+              {% endblock %}
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+
+<div class="card text-center">
+  
+  <div class="card-body">
+    <h5 class="card-text">🤟 Made with love by Santiago Urban 🤟</h5>
+    <p class="card-text">To contact me please visit my Networks </p>
+    <a href="#" target="_blank" class="btn btn-primary">Portfolio</a>
+    <!-- Linkedin -->
+    <a class="btn btn-btn btn-primary btn-floating m-1" href="https://www.linkedin.com/in/santiagourban/" target="_blank" role="button"
+    ><i class="fab fa-linkedin-in"></i
+  ></a>
+
+  <!-- Github -->
+  <a class="btn btn btn-primary btn-floating m-1" href="https://github.com/santiudev" target="_blank" role="button"
+    ><i class="fab fa-github"></i
+  ></a>
+  </div>
+  
+</html>
+
