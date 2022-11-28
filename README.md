@@ -3,7 +3,7 @@
 ### To see de website use, User: testing , Password: 1234test
 _This project is a stock controller with different attractive data for customers, with a dashboard that graphs that data_
 ![](readme/IMS.png)
-![](ireadme/ims2.png)
+![](readme/ims2.png)
 
 ## Built with🛠️
 * [Django](https://www.djangoproject.com/) For the backend
